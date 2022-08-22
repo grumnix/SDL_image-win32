@@ -15,6 +15,10 @@
 
   outputs = { self, nixpkgs, tinycmmc, SDL-win32, SDL_image_src }:
     tinycmmc.lib.eachWin32SystemWithPkgs (pkgs:
+      let
+        libpng = pkgs.libpng;
+        libjpeg = (pkgs.libjpeg_original.overrideAttrs (oldAttrs: { meta = {}; }));
+      in
       {
         packages = rec {
           default = SDL_image;
@@ -25,6 +29,14 @@
 
             src = SDL_image_src;
 
+            postFixup = ''
+              ln -sfv ${libpng}/bin/*.dll $out/bin/
+              ln -sfv ${libjpeg}/bin/*.dll $out/bin/
+
+              # Required by libpng, but not provided by it
+              ln -sfv ${pkgs.zlib}/bin/*.dll $out/bin/
+            '';
+
             nativeBuildInputs = [
               pkgs.buildPackages.pkgconfig
             ];
@@ -32,8 +44,8 @@
             buildInputs = [
               SDL-win32.packages.${pkgs.system}.default
 
-              pkgs.libpng
-              (pkgs.libjpeg_original.overrideAttrs (oldAttrs: { meta = {}; }))
+              libpng
+              libjpeg
             ];
           };
         };
