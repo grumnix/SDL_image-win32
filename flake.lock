@@ -11,11 +11,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1687870502,
-        "narHash": "sha256-63zXBDR12zWDbfC4YhT+pyhSBaJQKyQS8OCLz2k+TSw=",
+        "lastModified": 1712097214,
+        "narHash": "sha256-rJy+WfAe9LgEc1pZWC37sdfD4ehNpR10IwLXY9rSzcc=",
         "owner": "grumnix",
         "repo": "SDL-win32",
-        "rev": "f9bc861ff89802a0a30b1b7c7b8095f8df5d178e",
+        "rev": "84322fa45962eccccc33f80a40dbba636c83bedd",
         "type": "github"
       },
       "original": {
@@ -40,6 +40,7 @@
     "SDL_src": {
       "flake": false,
       "locked": {
+        "lastModified": 1326954629,
         "narHash": "sha256-0tffZEi/OVCkHvSrfVZRnK+qpWqq9m1+1QQz9itkVNM=",
         "type": "tarball",
         "url": "https://www.libsdl.org/release/SDL-1.2.15.tar.gz"
